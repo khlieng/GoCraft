@@ -142,6 +142,9 @@ func (g *Game) handleConnection(conn net.Conn) {
 		case STATE_LOGIN:
 			switch id {
 			case 0x00:
+                if (len(g.players)+1 > g.MaxPlayers) {
+                	return
+                }
 				uuid := "de305d54-75b4-431b-adb2-eb6b9e546013"
 				username = ReadString(r)
 
